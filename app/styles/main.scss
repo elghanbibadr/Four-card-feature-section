@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
+// variabels
+
+$Red: hsl(0, 78%, 62%);
+$Cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+$desktop:800px;
+
+// secondary
+$Very-Dark-Blue: hsl(234, 12%, 34%);
+$Grayish-Blue: hsl(229, 6%, 66%);
+$Very-Light-Gray: hsl(0, 0%, 98%);
+
+
+// mixins
+
+@mixin desktop {
+    @media screen and (min-width:$desktop) {
+        @content;
+    }
+}
+// reset
+
+*,::after,::before{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: $Very-Light-Gray;
+    text-align: center;
+    padding:  4.5rem;
+}
+
+.header{
+
+    &__title{
+        color:$Very-Dark-Blue ;
+        font-weight: 200;
+        font-size: 1.7rem;
+    }
+    
+    &__subtitle{
+        color: $Very-Dark-Blue;
+        font-weight: 600;
+        font-size: 1.8rem;
+        margin-block: 1rem;
+    }
+
+   
+}
+
+p{
+    color: $Grayish-Blue;
+    font-size: 0.9rem;
+}
+
+main{
+    @include desktop{
+      display: flex;
+    
+    }
+ 
+}
+
+.card{
+    margin-block: 2rem;
+    background-color: white;
+    text-align: left;
+    padding:1rem 2rem;
+    position: relative;
+    box-shadow: 5px 1px 10px rgba(204, 204, 204, 0.466);
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  @include desktop{
+    height: fit-content;
+    margin: 1rem;
+  }
+    &::before{
+        content: '';
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 3px;
+    }
+
+
+    &__title{
+     color: $Very-Dark-Blue;
+     margin-block: 1rem;
+    }
+
+
+    &__logo{
+        height: 2rem;
+        position: relative;
+        left:96%;
+        top: 2rem;
+        @include desktop{
+          height: 3rem;
+          left: 90%;
+          top: 1rem;
+        }
+    }
+}
+
+
+.card--cyan{
+    &::before{
+        background-color: $Cyan;
+    }
+}
+
+.card--red{
+    &::before{
+        background-color: $Red;
+    }
+}
+
+.card--orange{
+    &::before{
+        background-color: $orange;
+    }
+}
+
+.card--blue{
+    &::before{
+        background-color: $blue;
+    }
+}
+
+.card--cyan,.card--blue{
+    @include desktop{
+     transform: translateY(5rem);
+    }
+}
